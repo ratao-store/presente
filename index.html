@@ -17,119 +17,176 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Fundo com o Homem-Aranha destacado */
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
-                        url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1000&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            padding: 40px 20px;
+            background-color: #0a0a0c;
+            padding: 20px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
+        /* Container principal dividido em duas partes */
+        .container-principal {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(229, 28, 36, 0.4); /* Vermelho Aranha */
-            border-radius: 20px;
+            border: 2px solid rgba(229, 28, 36, 0.3);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        /* LADO ESQUERDO: Homem-Aranha Destacado */
+        .lado-aranha {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            min-height: 500px;
+            position: relative;
+            border-right: 2px solid rgba(229, 28, 36, 0.3);
+        }
+
+        /* Sombra interna para o Homem-Aranha mesclar bem */
+        .lado-aranha::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, transparent 70%, rgba(10, 10, 12, 0.5));
+        }
+
+        /* LADO DIREITO: Conteúdo, Texto e Fotos dela */
+        .lado-conteudo {
+            flex: 1.2;
             padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             color: #fff;
+            background: rgba(10, 10, 12, 0.85);
         }
 
         .spider-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #e51c24;
+            margin-bottom: 10px;
             animation: pulse 2s infinite;
+            text-align: center;
         }
 
         h1 {
             color: #e51c24;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
             letter-spacing: 1px;
+            text-align: center;
         }
 
         .texto-carinhoso {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             text-align: left;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 15px;
             border-left: 4px solid #005a9c; /* Azul Aranha */
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Galeria de Fotos embaixo do texto */
+        /* CONTAINER DAS FOTOS DELA */
         .fotos-container {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 10px;
         }
 
         .foto-dela {
-            width: 150px;
-            height: 150px;
+            width: 110px;
+            height: 110px;
             object-fit: cover;
-            border-radius: 15px; /* Formato quadradinho com borda arredondada fica ótimo para fotos zueiras */
-            border: 3px solid #e51c24; /* Vermelho Aranha */
-            box-shadow: 0 4px 15px rgba(229, 28, 36, 0.5);
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            border: 2px solid #e51c24;
+            box-shadow: 0 4px 15px rgba(229, 28, 36, 0.3);
+            
+            /* O SEGREDO DO BORRÃO: Começa meio borrada */
+            filter: blur(4px) brightness(0.8);
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
-        /* Efeito divertido quando passa o mouse nas fotos zueiras */
+        /* Quando passa o mouse ou toca, ela fica nítida e bonita */
         .foto-dela:hover {
-            transform: scale(1.1) rotate(-5deg);
-            border-color: #005a9c; 
+            filter: blur(0px) brightness(1);
+            transform: scale(1.1) rotate(3deg);
+            border-color: #005a9c;
+            box-shadow: 0 4px 20px rgba(0, 90, 156, 0.6);
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            .container-principal {
+                flex-direction: column;
+            }
+            .lado-aranha {
+                min-height: 300px;
+                border-right: none;
+                border-bottom: 2px solid rgba(229, 28, 36, 0.3);
+            }
+            .lado-aranha::after {
+                background: linear-gradient(to bottom, transparent 70%, rgba(10, 10, 12, 0.5));
+            }
+            .lado-conteudo {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="spider-icon">🕷️</div>
-        <h1>Feliz Aniversário! ❤️</h1>
+    <div class="container-principal">
         
-        <div class="texto-carinhoso">
-            <p>Oi, minha linda,</p>
-            <br>
-            <p>Hoje o dia é todo seu, e eu não poderia deixar de te dar um parabéns muito especial. Você é uma pessoa incrível, dona de uma energia única e de um sorriso que ilumina qualquer lugar.</p>
-            <br>
-            <p>Adoro cada momento que passo do seu lado, a sua companhia e o quanto a gente se diverte junto. Como você ama o Homem-Aranha, achei justo que ele viesse te dar os parabéns também! Se o Peter Parker teve sorte com a MJ, eu tenho muito mais sorte por ter você na minha vida.</p>
-            <br>
-            <p>Que o seu novo ano seja maravilhoso, cheio de conquistas, saúde, felicidade e de muitas risadas (especialmente como as que a gente dá com esses seus momentos da seção abaixo!). Parabéns por ser exatamente quem você é.</p>
-            <br>
-            <p>Com todo o meu carinho, <br><strong>Edson</strong></p>
+        <div class="lado-aranha"></div>
+        
+        <div class="lado-conteudo">
+            <div class="spider-icon">🕷️</div>
+            <h1>Feliz Aniversário! ❤️</h1>
+            
+            <div class="texto-carinhoso">
+                <p>Oi, minha linda,</p>
+                <br>
+                <p>Hoje o dia é todo seu, e eu não poderia deixar de te dar um parabéns muito especial. Você é uma pessoa incrível, dona de uma energia única e de um sorriso que ilumina qualquer lugar.</p>
+                <br>
+                <p>Adoro cada momento que passo do seu lado, a sua companhia e o quanto a gente se diverte junto. Como você ama o Homem-Aranha, achei justo ele estar aqui hoje! Se o Peter Parker teve sorte com a MJ, eu tenho muito mais sorte por ter você na minha vida.</p>
+                <br>
+                <p>Que o seu novo ano seja maravilhoso, cheio de conquistas, saúde, felicidade e de muitas risadas (especialmente como as que a gente dá com os seus momentos aqui embaixo!). Parabéns por ser exatamente quem você é.</p>
+                <br>
+                <p>Com todo o meu carinho, <br><strong>Edson</strong></p>
+            </div>
+
+            <div class="fotos-container">
+                <img class="foto-dela" src="foto1.jpg" title="Passe o mouse para revelar!">
+                <img class="foto-dela" src="foto2.jpg" title="Passe o mouse para revelar!">
+                <img class="foto-dela" src="foto3.jpg" title="Passe o mouse para revelar!">
+            </div>
         </div>
 
-        <!-- SEÇÃO DE FOTOS DESTAQUE EMBAIXO DO TEXTO -->
-        <div class="fotos-container">
-            <!-- Coloque as fotos na mesma pasta do arquivo HTML com esses nomes -->
-            <img class="foto-dela" src="foto1.jpg">
-            <img class="foto-dela" src="foto2.jpg">
-        </div>
-        
-        <!-- Elemento de áudio escondido -->
-        <audio id="meuAudio" src="semsal.mp3" loop></audio>
     </div>
+        
+    <audio id="meuAudio" src="semsal.mp3" loop></audio>
 
     <script>
-        // Inicia a música no primeiro clique ou toque dela na tela
         window.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById("meuAudio");
             
+            // Ativa o som no primeiro toque/clique dela na tela
             document.body.addEventListener('click', () => {
                 audio.play();
             }, { once: true });
