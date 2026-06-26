@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* O Homem-Aranha volta a ser o fundo de tudo, bem visível */
+            /* O Homem-Aranha de fundo */
             background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), 
                         url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1000&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* Caixa de texto flutuando na frente do Homem-Aranha */
+        /* Caixa de texto centralizada */
         .card-texto {
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
@@ -40,7 +40,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             color: #fff;
-            z-index: 10; /* Garante que o texto fica na frente de tudo */
+            z-index: 10;
             position: relative;
         }
 
@@ -63,7 +63,7 @@
             text-align: left;
         }
 
-        /* FOTOS DELA: Soltas pelo fundo do site */
+        /* FOTOS DELA: Soltas e borradinhas de fundo */
         .foto-solta {
             position: absolute;
             width: 140px;
@@ -72,23 +72,23 @@
             border-radius: 15px;
             border: 2px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            z-index: 1; /* Fica atrás do texto, mas na frente do Homem-Aranha */
+            z-index: 1;
             
-            /* Efeito borradinho de início */
+            /* Efeito borrado inicial */
             filter: blur(4px) brightness(0.9);
             transition: all 0.4s ease;
             cursor: pointer;
         }
 
-        /* Quando ela interagir, a foto fica 100% nítida e ganha destaque */
+        /* Fica nítida ao interagir */
         .foto-solta:hover {
             filter: blur(0px) brightness(1);
             transform: scale(1.15) rotate(5deg);
             border-color: #e51c24;
-            z-index: 12; /* Passa para a frente ao focar */
+            z-index: 12;
         }
 
-        /* POSICIONAMENTO DAS FOTOS SOLTAS (Ajuste os valores para espalhar como quiser) */
+        /* Espalhando as 4 fotos pelos cantos da tela */
         .foto1 { top: 10%; left: 8%; transform: rotate(-8deg); }
         .foto2 { bottom: 12%; left: 5%; transform: rotate(6deg); }
         .foto3 { top: 15%; right: 8%; transform: rotate(10deg); }
@@ -100,7 +100,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Ajuste para telas de celular não embolar as fotos atrás do texto */
+        /* Organização automática para celular */
         @media (max-width: 850px) {
             body {
                 flex-direction: column;
@@ -124,12 +124,11 @@
 </head>
 <body>
 
-    <!-- FOTOS DELA ESPALHADAS E SOLTAS NO FUNDO (Antes do texto) -->
-    <!-- Adicione os arquivos das fotos na mesma pasta com esses nomes -->
-    <img class="foto-solta foto1" src="foto1.jpg">
-    <img class="foto-solta foto2" src="foto2.jpg">
-    <img class="foto-solta foto3" src="foto3.jpg">
-    <img class="foto-solta foto4" src="foto4.jpg">
+    <!-- FOTOS SOLTAS NO FUNDO (Agora ajustadas para o seu formato .jpeg) -->
+    <img class="foto-solta foto1" src="foto1.jpeg">
+    <img class="foto-solta foto2" src="foto2.jpeg">
+    <img class="foto-solta foto3" src="foto3.jpeg">
+    <img class="foto-solta foto4" src="foto4.jpeg">
 
     <!-- CAIXA DE TEXTO CENTRALIZADA -->
     <div class="card-texto">
@@ -149,7 +148,7 @@
         </div>
     </div>
         
-    <!-- Elemento de áudio escondido (Ativa ao clicar na tela) -->
+    <!-- Música de fundo -->
     <audio id="meuAudio" src="semsal.mp3" loop></audio>
 
     <script>
