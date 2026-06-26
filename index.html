@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário, Linda! 🕷️❤️</title>
+    <title>Feliz Aniversário! 🕷️❤️</title>
     <style>
         * {
             margin: 0;
@@ -48,33 +48,9 @@
         h1 {
             color: #e51c24;
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 1px;
-        }
-
-        /* Galeria de Fotos dela */
-        .fotos-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .foto-dela {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 50%; /* Deixa a foto redondinha */
-            border: 3px solid #005a9c; /* Azul Aranha */
-            box-shadow: 0 4px 15px rgba(0, 90, 156, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .foto-dela:hover {
-            transform: scale(1.1) rotate(5deg);
-            border-color: #e51c24; /* Muda pro vermelho no hover */
         }
 
         .texto-carinhoso {
@@ -85,6 +61,32 @@
             padding: 25px;
             border-radius: 10px;
             border-left: 4px solid #005a9c; /* Azul Aranha */
+            margin-bottom: 30px;
+        }
+
+        /* Galeria de Fotos embaixo do texto */
+        .fotos-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .foto-dela {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px; /* Formato quadradinho com borda arredondada fica ótimo para fotos zueiras */
+            border: 3px solid #e51c24; /* Vermelho Aranha */
+            box-shadow: 0 4px 15px rgba(229, 28, 36, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        /* Efeito divertido quando passa o mouse nas fotos zueiras */
+        .foto-dela:hover {
+            transform: scale(1.1) rotate(-5deg);
+            border-color: #005a9c; 
         }
 
         @keyframes pulse {
@@ -100,35 +102,37 @@
         <div class="spider-icon">🕷️</div>
         <h1>Feliz Aniversário! ❤️</h1>
         
-        <div class="fotos-container">
-            <img class="foto-dela" src="foto1.jpg" alt="Sua Linda 1">
-            <img class="foto-dela" src="foto2.jpg" alt="Sua Linda 2">
-        </div>
-
         <div class="texto-carinhoso">
             <p>Oi, minha linda,</p>
             <br>
-            <p>Hoje é o seu dia, e eu não podia deixar de te dar um parabéns todo especial. Mesmo a gente estando na fase de "ficando", você já tem um espaço gigante nos meus dias e no meu pensamento.</p>
+            <p>Hoje o dia é todo seu, e eu não poderia deixar de te dar um parabéns muito especial. Você é uma pessoa incrível, dona de uma energia única e de um sorriso que ilumina qualquer lugar.</p>
             <br>
-            <p>Adoro seu sorriso, seu jeito e a energia que você traz quando estamos juntos. Sei o quanto você gosta do Homem-Aranha (e se o Peter Parker teve sorte com a MJ, eu com certeza tive muita sorte de te encontrar!).</p>
+            <p>Adoro cada momento que passo do seu lado, a sua companhia e o quanto a gente se diverte junto. Como você ama o Homem-Aranha, achei justo que ele viesse te dar os parabéns também! Se o Peter Parker teve sorte com a MJ, eu tenho muito mais sorte por ter você na minha vida.</p>
             <br>
-            <p>Que o seu novo ano seja incrível, cheio de conquistas, risadas e momentos inesquecíveis — de preferência, vários deles do meu lado. Parabéns por ser essa garota tão incrível!</p>
+            <p>Que o seu novo ano seja maravilhoso, cheio de conquistas, saúde, felicidade e de muitas risadas (especialmente como as que a gente dá com esses seus momentos da seção abaixo!). Parabéns por ser exatamente quem você é.</p>
             <br>
-            <p>Com muito carinho, <br><strong>[Seu Nome]</strong></p>
+            <p>Com todo o meu carinho, <br><strong>Edson</strong></p>
+        </div>
+
+        <!-- SEÇÃO DE FOTOS DESTAQUE EMBAIXO DO TEXTO -->
+        <div class="fotos-container">
+            <!-- Coloque as fotos na mesma pasta do arquivo HTML com esses nomes -->
+            <img class="foto-dela" src="foto1.jpg">
+            <img class="foto-dela" src="foto2.jpg">
         </div>
         
+        <!-- Elemento de áudio escondido -->
         <audio id="meuAudio" src="semsal.mp3" loop></audio>
     </div>
 
     <script>
-        // Tenta tocar a música assim que o site carrega
+        // Inicia a música no primeiro clique ou toque dela na tela
         window.addEventListener('DOMContentLoaded', () => {
             const audio = document.getElementById("meuAudio");
             
-            // Força o play no primeiro clique ou toque dela na tela (burlar o bloqueio do navegador)
             document.body.addEventListener('click', () => {
                 audio.play();
-            }, { once: true }); // Executa só uma vez
+            }, { once: true });
             
             document.body.addEventListener('touchstart', () => {
                 audio.play();
